@@ -2476,10 +2476,7 @@ Google map
     width: 100%; } }
 
 /*custom*/
-.caption-content {
-  text-align: left; }
-
-.container {
+.container-title {
   margin: 0px 40px; }
 
 .is-bebas {
