@@ -5,7 +5,8 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve"
+    "start": "serve",
+    "sass": "node-sass --watch assets/scss/style.scss -o assets/css"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/willysvarela/titan_template#readme",
   "dependencies": {
+    "node-sass": "^4.12.0",
     "serve": "^11.0.0"
   }
 }

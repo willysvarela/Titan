@@ -9,7 +9,7 @@
 --------------------------------------------------------------*/
 
 @import "button";
-
+ 
 /*--------------------------------------------------------------
 	Forms
 --------------------------------------------------------------*/
@@ -177,3 +177,21 @@ Google map
 --------------------------------------------------------------*/
 
 @import "media_querries";
+
+/*custom*/
+.caption-content{
+	text-align: left;
+}
+
+.container{
+	margin: 0px 40px;
+}
+
+.is-bebas{
+	font-family: 'bebas Neue'
+}
+
+
+.is-greatvibes{
+	font-family: 'great vibes'
+}
