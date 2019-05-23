@@ -1,0 +1,26 @@
+{
+  "name": "titan_template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willysvarela/titan_template.git"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willysvarela/titan_template/issues"
+  },
+  "homepage": "https://github.com/willysvarela/titan_template#readme",
+  "dependencies": {
+    "serve": "^11.0.0"
+  }
+}
