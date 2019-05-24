@@ -194,3 +194,16 @@ Google map
 .is-greatvibes{
 	font-family: 'great vibes'
 }
+
+.footer-menu{
+	display: flex; 
+	flex-direction: row; 
+	justify-content: center;
+}
+.footer-menu a {
+	padding: 20px;
+}
+
+.is-red{
+	color: red;
+}

@@ -3,13 +3,22 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 /* ---------------------------------------------- /*
  * Preloader
  /* ---------------------------------------------- */
-(function(){
+(function() {
     $(window).on('load', function() {
         $('.loader').fadeOut();
         $('.page-loader').delay(350).fadeOut('slow');
     });
 
     $(document).ready(function() {
+
+
+        var feed = new Instafeed({
+            get: 'user',
+            userId: '3161652433',
+            clientId: '1e7df0de3c4d47989b01525d369ec20b',
+            accessToken: ''
+        });
+        feed.run();
 
         /* ---------------------------------------------- /*
          * WOW Animation When You Scroll
@@ -34,7 +43,9 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         });
 
         $('a[href="#totop"]').click(function() {
-            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            $('html, body').animate({
+                scrollTop: 0
+            }, 'slow');
             return false;
         });
 
@@ -44,13 +55,13 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          /* ---------------------------------------------- */
 
         var homeSection = $('.home-section'),
-            navbar      = $('.navbar-custom'),
-            navHeight   = navbar.height(),
-            worksgrid   = $('#works-grid'),
-            width       = Math.max($(window).width(), window.innerWidth),
-            mobileTest  = false;
+            navbar = $('.navbar-custom'),
+            navHeight = navbar.height(),
+            worksgrid = $('#works-grid'),
+            width = Math.max($(window).width(), window.innerWidth),
+            mobileTest = false;
 
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             mobileTest = true;
         }
 
@@ -109,7 +120,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                 }
                 if (homeSection.hasClass('home-fade') && ($(scrollTopp).scrollTop() <= homeSHeight)) {
                     var caption = $('.caption-content');
-                    caption.css('opacity', (1 - topScroll/homeSection.height() * 1));
+                    caption.css('opacity', (1 - topScroll / homeSection.height() * 1));
                 }
             }
         }
@@ -118,8 +129,8 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Intro slider setup
          /* ---------------------------------------------- */
 
-        if( $('.hero-slider').length > 0 ) {
-            $('.hero-slider').flexslider( {
+        if ($('.hero-slider').length > 0) {
+            $('.hero-slider').flexslider({
                 animation: "fade",
                 animationSpeed: 1000,
                 animationLoop: true,
@@ -127,12 +138,24 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                 nextText: '',
                 controlNav: null,
                 before: function(slider) {
-                    $('.titan-caption').fadeOut().animate({top:'-80px'},{queue:false, easing: 'swing', duration: 700});
+                    $('.titan-caption').fadeOut().animate({
+                        top: '-80px'
+                    }, {
+                        queue: false,
+                        easing: 'swing',
+                        duration: 700
+                    });
                     slider.slides.eq(slider.currentSlide).delay(500);
                     slider.slides.eq(slider.animatingTo).delay(500);
                 },
                 after: function(slider) {
-                    $('.titan-caption').fadeIn().animate({top:'0'},{queue:false, easing: 'swing', duration: 700});
+                    $('.titan-caption').fadeIn().animate({
+                        top: '0'
+                    }, {
+                        queue: false,
+                        easing: 'swing',
+                        duration: 700
+                    });
                 },
                 useCSS: true
             });
@@ -157,7 +180,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         function navbarAnimation(navbar, homeSection, navHeight) {
             var topScroll = $(window).scrollTop();
             if (navbar.length > 0 && homeSection.length > 0) {
-                if(topScroll >= navHeight) {
+                if (topScroll >= navHeight) {
                     navbar.removeClass('navbar-transparent');
                 } else {
                     navbar.addClass('navbar-transparent');
@@ -172,7 +195,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         function navbarSubmenu(width) {
             if (width > 767) {
                 $('.navbar-custom .navbar-nav > li.dropdown').hover(function() {
-                    var MenuLeftOffset  = $('.dropdown-menu', $(this)).offset().left;
+                    var MenuLeftOffset = $('.dropdown-menu', $(this)).offset().left;
                     var Menu1LevelWidth = $('.dropdown-menu', $(this)).width();
                     if (width - MenuLeftOffset < Menu1LevelWidth * 2) {
                         $(this).children('.dropdown-menu').addClass('leftauto');
@@ -228,8 +251,8 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Navbar collapse on click
          /* ---------------------------------------------- */
 
-        $(document).on('click','.navbar-collapse.in',function(e) {
-            if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+        $(document).on('click', '.navbar-collapse.in', function(e) {
+            if ($(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle') {
                 $(this).collapse('hide');
             }
         });
@@ -249,7 +272,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             gallery: {
                 enabled: true,
                 navigateByImgClick: true,
-                preload: [0,1]
+                preload: [0, 1]
             },
             image: {
                 titleSrc: 'title',
@@ -262,7 +285,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Portfolio
          /* ---------------------------------------------- */
 
-        var worksgrid   = $('#works-grid'),
+        var worksgrid = $('#works-grid'),
             worksgrid_mode;
 
         if (worksgrid.hasClass('works-grid-masonry')) {
@@ -300,8 +323,8 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Testimonials
          /* ---------------------------------------------- */
 
-        if ($('.testimonials-slider').length > 0 ) {
-            $('.testimonials-slider').flexslider( {
+        if ($('.testimonials-slider').length > 0) {
+            $('.testimonials-slider').flexslider({
                 animation: "slide",
                 smoothHeight: true
             });
@@ -312,8 +335,8 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Post Slider
          /* ---------------------------------------------- */
 
-        if ($('.post-images-slider').length > 0 ) {
-            $('.post-images-slider').flexslider( {
+        if ($('.post-images-slider').length > 0) {
+            $('.post-images-slider').flexslider({
                 animation: "slide",
                 smoothHeight: true,
             });
@@ -327,9 +350,18 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         $('.progress-bar').each(function(i) {
             $(this).appear(function() {
                 var percent = $(this).attr('aria-valuenow');
-                $(this).animate({'width' : percent + '%'});
-                $(this).find('span').animate({'opacity' : 1}, 900);
-                $(this).find('span').countTo({from: 0, to: percent, speed: 900, refreshInterval: 30});
+                $(this).animate({
+                    'width': percent + '%'
+                });
+                $(this).find('span').animate({
+                    'opacity': 1
+                }, 900);
+                $(this).find('span').countTo({
+                    from: 0,
+                    to: percent,
+                    speed: 900,
+                    refreshInterval: 30
+                });
             });
         });
 
@@ -341,7 +373,12 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         $('.count-item').each(function(i) {
             $(this).appear(function() {
                 var number = $(this).find('.count-to').data('countto');
-                $(this).find('.count-to').countTo({from: 0, to: number, speed: 1200, refreshInterval: 30});
+                $(this).find('.count-to').countTo({
+                    from: 0,
+                    to: number,
+                    speed: 1200,
+                    refreshInterval: 30
+                });
             });
         });
 
@@ -350,7 +387,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Youtube video background
          /* ---------------------------------------------- */
 
-        $(function(){
+        $(function() {
             $(".video-player").mb_YTPlayer();
         });
 
@@ -405,7 +442,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             }
 
             // Build carousel
-            $(this).owlCarousel( {
+            $(this).owlCarousel({
                 navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
                 nav: navigation,
                 dots: pagination,
@@ -444,7 +481,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          Working Contact Form
          ================================================================*/
 
-        $("#contactForm").submit(function (e) {
+        $("#contactForm").submit(function(e) {
 
             e.preventDefault();
             var $ = jQuery;
@@ -458,22 +495,21 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             $cfsubmit.text("Sending...");
 
 
-            $.ajax(
-                {
-                    url: formURL,
-                    type: "POST",
-                    data: postData,
-                    success: function (data) {
-                        $cfResponse.html(data);
-                        $cfsubmit.text(cfsubmitText);
-                        $('#contactForm input[name=name]').val('');
-                        $('#contactForm input[name=email]').val('');
-                        $('#contactForm textarea[name=message]').val('');
-                    },
-                    error: function (data) {
-                        alert("Error occurd! Please try again");
-                    }
-                });
+            $.ajax({
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function(data) {
+                    $cfResponse.html(data);
+                    $cfsubmit.text(cfsubmitText);
+                    $('#contactForm input[name=name]').val('');
+                    $('#contactForm input[name=email]').val('');
+                    $('#contactForm textarea[name=message]').val('');
+                },
+                error: function(data) {
+                    alert("Error occurd! Please try again");
+                }
+            });
 
             return false;
 
@@ -484,7 +520,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          Working Request A Call Form
          ================================================================*/
 
-        $("#requestACall").submit(function (e) {
+        $("#requestACall").submit(function(e) {
 
             e.preventDefault();
             var $ = jQuery;
@@ -498,22 +534,21 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             $cfsubmit.text("Sending...");
 
 
-            $.ajax(
-                {
-                    url: formURL,
-                    type: "POST",
-                    data: postData,
-                    success: function (data) {
-                        $cfResponse.html(data);
-                        $cfsubmit.text(cfsubmitText);
-                        $('#requestACall input[name=name]').val('');
-                        $('#requestACall input[name=subject]').val('');
-                        $('#requestACall textarea[name=phone]').val('');
-                    },
-                    error: function (data) {
-                        alert("Error occurd! Please try again");
-                    }
-                });
+            $.ajax({
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function(data) {
+                    $cfResponse.html(data);
+                    $cfsubmit.text(cfsubmitText);
+                    $('#requestACall input[name=name]').val('');
+                    $('#requestACall input[name=subject]').val('');
+                    $('#requestACall textarea[name=phone]').val('');
+                },
+                error: function(data) {
+                    alert("Error occurd! Please try again");
+                }
+            });
 
             return false;
 
@@ -524,7 +559,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          Working Reservation Form
          ================================================================*/
 
-        $("#reservationForm").submit(function (e) {
+        $("#reservationForm").submit(function(e) {
 
             e.preventDefault();
             var $ = jQuery;
@@ -538,23 +573,22 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             $cfsubmit.text("Sending...");
 
 
-            $.ajax(
-                {
-                    url: formURL,
-                    type: "POST",
-                    data: postData,
-                    success: function (data) {
-                        $cfResponse.html(data);
-                        $cfsubmit.text(cfsubmitText);
-                        $('#reservationForm input[name=date]').val('');
-                        $('#reservationForm input[name=time]').val('');
-                        $('#reservationForm textarea[name=people]').val('');
-                        $('#reservationForm textarea[name=email]').val('');
-                    },
-                    error: function (data) {
-                        alert("Error occurd! Please try again");
-                    }
-                });
+            $.ajax({
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function(data) {
+                    $cfResponse.html(data);
+                    $cfsubmit.text(cfsubmitText);
+                    $('#reservationForm input[name=date]').val('');
+                    $('#reservationForm input[name=time]').val('');
+                    $('#reservationForm textarea[name=people]').val('');
+                    $('#reservationForm textarea[name=email]').val('');
+                },
+                error: function(data) {
+                    alert("Error occurd! Please try again");
+                }
+            });
 
             return false;
 
@@ -568,10 +602,10 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         $('#subscription-form').submit(function(e) {
 
             e.preventDefault();
-            var $form           = $('#subscription-form');
-            var submit          = $('#subscription-form-submit');
-            var ajaxResponse    = $('#subscription-response');
-            var email           = $('input#semail').val();
+            var $form = $('#subscription-form');
+            var submit = $('#subscription-form-submit');
+            var ajaxResponse = $('#subscription-response');
+            var email = $('input#semail').val();
 
             $.ajax({
                 type: 'POST',
@@ -586,7 +620,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                     submit.append('<i class="fa fa-cog fa-spin"></i> Wait...');
                 },
                 success: function(result) {
-                    if(result.sendstatus == 1) {
+                    if (result.sendstatus == 1) {
                         ajaxResponse.html(result.message);
                         $form.fadeOut(500);
                     } else {
@@ -602,7 +636,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
          * Google Map
          /* ---------------------------------------------- */
 
-        if($("#map").length == 0 || typeof google == 'undefined') return;
+        if ($("#map").length == 0 || typeof google == 'undefined') return;
 
         // When the window has finished loading create our google map below
         google.maps.event.addDomListener(window, 'load', init);
@@ -622,203 +656,137 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
                 // How you would like to style the map.
                 // This is where you would paste any style found on Snazzy Maps.
-                styles: [
-                    {
-                        "featureType": "all",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "saturation": "-11"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "saturation": "22"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "saturation": "-58"
-                            },
-                            {
-                                "color": "#cfcece"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "color": "#f8f8f8"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "color": "#999999"
-                            },
-                            {
-                                "visibility": "on"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative.country",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#f9f9f9"
-                            },
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "color": "#f2f2f2"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "saturation": "-19"
-                            },
-                            {
-                                "lightness": "-2"
-                            },
-                            {
-                                "visibility": "on"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "saturation": -100
-                            },
-                            {
-                                "lightness": 45
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "labels.icon",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "transit",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "color": "#d8e1e5"
-                            },
-                            {
-                                "visibility": "on"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#dedede"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "color": "#cbcbcb"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "color": "#9c9c9c"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    }
-                ]
+                styles: [{
+                    "featureType": "all",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "visibility": "on"
+                    }, {
+                        "saturation": "-11"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "saturation": "22"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "saturation": "-58"
+                    }, {
+                        "color": "#cfcece"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "labels.text",
+                    "stylers": [{
+                        "color": "#f8f8f8"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#999999"
+                    }, {
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "administrative.country",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#f9f9f9"
+                    }, {
+                        "visibility": "simplified"
+                    }]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [{
+                        "color": "#f2f2f2"
+                    }]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "saturation": "-19"
+                    }, {
+                        "lightness": "-2"
+                    }, {
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [{
+                        "saturation": -100
+                    }, {
+                        "lightness": 45
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "simplified"
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [{
+                        "color": "#d8e1e5"
+                    }, {
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#dedede"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "labels.text",
+                    "stylers": [{
+                        "color": "#cbcbcb"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#9c9c9c"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }]
             };
 
             // Get the HTML DOM element that will contain your map
@@ -848,5 +816,3 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
     });
 })(jQuery);
-
-
