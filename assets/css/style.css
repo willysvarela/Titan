@@ -2495,3 +2495,7 @@ Google map
 
 .is-red {
   color: red; }
+
+.features-item:hover .features-icon span {
+  transition: .5s;
+  color: #1dc275; }

@@ -11,6 +11,14 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
     $(document).ready(function() {
 
+        $('.features-item').hover(function(){
+            var animation = 'animated swing';
+            var animation_end = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+            $(this).addClass(animation).one(animation_end, function(){
+                $(this).removeClass(animation);
+            });
+        });
+        
 
         var feed = new Instafeed({
             get: 'user',

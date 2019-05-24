@@ -179,9 +179,6 @@ Google map
 @import "media_querries";
 
 /*custom*/
-.caption-content{
-}
-
 .container-title{	
 	margin: 0px 40px;
 }
@@ -206,4 +203,9 @@ Google map
 
 .is-red{
 	color: red;
+}
+ 
+.features-item:hover .features-icon span{
+	transition: .5s;
+	color: rgb(29, 194, 117);
 }
